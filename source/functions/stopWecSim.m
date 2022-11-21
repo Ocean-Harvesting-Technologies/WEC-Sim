@@ -54,7 +54,7 @@ if simu.saveWorkspace==1
         copyfile(outputFile,['../' filename])
     end
 end
-if exist('pctDir')
+if simu.saveWorkspace==1 && exist('pctDir')
     cd (['..' filesep pctDir filesep '..' filesep]); 
 end
 
