@@ -61,9 +61,9 @@ end
 %% Remove 'temp' directory
 
 % Remove 'temp' directory from path and remove 'temp' directory
-rmpath(fullfile(projectRootDir,'temp'));
+rmpath(fullfile(projectRootDir,tempDir));
 try
-    rmdir(fullfile(projectRootDir,'temp'),'s');
+    rmdir(fullfile(projectRootDir,tempDir),'s');
 end
 
 % Reset the loction of Simulink-generated files
