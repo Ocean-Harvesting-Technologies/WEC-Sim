@@ -31,15 +31,19 @@ projectRootDir = pwd;
 
 % Create 'temp' directory if it doesn't exist and add to 'temp' path
 warning('off','MATLAB:MKDIR:DirectoryExists')
-if mkdir('temp') == 0
-    mkdir 'temp'
+if exist('pctDir')
+    tempDir = ['temp', num2str(imcr)];
+else
+    tempDir = 'temp';
 end
-addpath(fullfile(projectRootDir,'temp'),'-end');
+if ~exist(tempDir,'dir')
+    mkdir(tempDir)
+end
+addpath(fullfile(projectRootDir,tempDir),'-end');
 
 % Save Simulink-generated helper files to 'temp' directory
 Simulink.fileGenControl('set',...
-    'CacheFolder',fullfile(projectRootDir,'temp'))
-
+    'CacheFolder',fullfile(projectRootDir,tempDir))
 
 %% Read input file
 tic
